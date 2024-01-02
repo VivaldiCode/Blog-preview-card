@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# Frontend Mentor - Blog Preview Card Solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Blog Preview Card challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/blog-preview-card-ckPaj01IcS). 
 
-## Available Scripts
+Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-In the project directory, you can run:
+## Table of contents
 
-### `npm start`
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Random Post from RSS](#random-post-from-rss)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Running](#Running-the-Blog-Preview-Card-Application)
+- [Author](#author)
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- See hover and focus states for all interactive elements on the page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![Your Solution Screenshot](./screenshot.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Repository URL](https://github.com/VivaldiCode/Blog-preview-card)
+- [Live Site URL](https://blog-preview-card.guilhermepinto.pt)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Styled Components using CoreUI](https://coreui.io/react) - For styles
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Random Post from RSS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+One part I'm particularly proud of is the implementation of fetching a random post from various RSS feeds. Here's an explanation of how it works:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```jsx
+const fetchRandomPost = async () => {
+    try {
+        const sources = [
+            'https://www.theverge.com/rss/index.xml',
+            'https://techcrunch.com/feed/',
+            'https://arstechnica.com/feed/',
+            'https://www.wired.com/feed/',
+            'https://www.techradar.com/rss',
+            'https://www.engadget.com/rss.xml',
+            'https://gizmodo.com/rss',
+            'https://www.zdnet.com/news/rss.xml',
+            'https://www.cnet.com/rss/news/'
+        ];
+        
+        // Randomly choose a source
+        const source = sources[Math.floor(Math.random() * sources.length)];
 
-## Learn More
+        // Construct the URL with CORS proxy
+        const url = 'https://corsproxy.io/?' + encodeURIComponent(source);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        // Fetch the RSS feed
+        const result = await extract(url);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        // Choose a random post from the fetched entries
+        const post = result.entries[Math.floor(Math.random() * result.entries.length)];
 
-### Code Splitting
+        // Set the state with the source and random post
+        setSource(result);
+        setRandomPost(post);
+    } catch (error) {
+        console.error('Error fetching random post:', error);
+    }
+};
+```
+This function selects a random RSS source from the predefined list, uses a CORS proxy to bypass cross-origin restrictions, fetches the RSS feed, and finally selects a random post from the fetched entries. This adds a dynamic and engaging element to your blog card.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Certainly! Here is the step-by-step guide in Markdown format:
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Running the Blog Preview Card Application
 
-### Making a Progressive Web App
+Follow these steps to set up and run the Blog Preview Card application on your local machine.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Prerequisites
 
-### Advanced Configuration
+Make sure you have the following software installed on your machine:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
 
-### Deployment
+## Clone the Repository
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Open a terminal and run the following command to clone the repository to your local machine:
 
-### `npm run build` fails to minify
+```bash
+git clone https://github.com/VivaldiCode/Blog-preview-card.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Navigate to the Project Directory
+
+Change into the project directory using the following command:
+
+```bash
+cd Blog-preview-card
+```
+
+## Install Dependencies
+
+Run the following command to install the project dependencies:
+
+```bash
+npm install
+```
+
+## Run the Application
+
+Start the application with the following command:
+
+```bash
+npm start
+```
+
+This will launch the application, and you can view it in your web browser at [http://localhost:3000](http://localhost:3000).
+
+## Explore the Random Post Feature
+
+The application includes a feature that fetches a random blog post from various RSS feeds. This functionality is automatically triggered when you visit the homepage. The random post is displayed along with information about the source.
+
+Feel free to explore different posts by refreshing the page or navigating to other sections of the application.
+
+### Congratulations!
+
+You have successfully set up and run the Blog Preview Card application on your local machine. If you encounter any issues, please refer to the project's documentation or seek assistance from the [repository owner](https://github.com/VivaldiCode).
+
+## Author
+
+### Website - [Guilherme Pinto](https://guilhermepinto.pt)
