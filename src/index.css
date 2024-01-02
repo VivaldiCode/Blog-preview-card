@@ -1,13 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Figtree', sans-serif;
+  font-size: 16px;
+  background-color: hsl(47, 88%, 63%);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.card{
+  font-family: 'Figtree', sans-serif;
+}
+.card-body{
+  background-color: hsl(0, 0%, 100%);
+}
+.card-header, .card-title{
+  font-weight: 800;
+}
+.card-text{
+  font-weight: 600;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
