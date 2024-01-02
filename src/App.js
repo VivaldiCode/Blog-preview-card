@@ -90,7 +90,7 @@ function App() {
                     <span>&copy; {new Date().getFullYear()} GuilhermePinto.</span>
                 </div>
                 <div>
-                    <span><a href={""}>GitHub</a></span>
+                    <span><CLink href={"https://github.com/VivaldiCode/Blog-preview-card"} target="_blank">GitHub</CLink></span>
                 </div>
             </CFooter>
         </div>
